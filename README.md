@@ -4,9 +4,18 @@
 
 This repository contains an Azure Workbook (dashboard) which provides insights, key document and guidance on rolling out FinOps and Cost Optimization in Azure.
 
+Data within your Azure environment is visualized along with the relevant recommendations and relevant guides. This encourages a data driven approach.
+
 > **Note:** The Workbook is provided as an example and is a work in progress.
 
 ![workbook](.images/finops-workbook.png)
+
+## What's Included?
+
+- Hybrid License Audit
+- Tagging Audit
+- Practical FinOps / Automation examples
+- Cost Optmization insights for Storage Accounts, AKS, Log Analytics, Orphan resources, Recovery services App Services and Virtual Machines.
 
 ## Requirements
 
@@ -33,6 +42,10 @@ To use this Workbook you need to:
 
 - Uplift the Virtual Machine page
 - Add ASEv3 views to the App Service page
+- Blob inventory by access tier
+- Fixing the AKS Node & SystemNode size checks (moving to Regex check)
+- Grammar
+- A PowerBI PBX for quick provisioning
 
 ## Additional Documentation
 
@@ -42,3 +55,7 @@ To use this Workbook you need to:
 ## Troubleshooting
 
 - **Throttling**: If you see any throttling errors, wait a minute and reduce the amount of `selected subscriptions` using the parameter at the top of the Workbook.
+
+## Contributing
+
+If you'd like to contribute, add improvements or fix any bugs, please reach out or raise an issue on the repository.
