@@ -13,9 +13,15 @@ Data within your Azure environment is visualized along with the relevant recomme
 ## What's Included?
 
 - Hybrid License Audit
+![hybrid-example](.images/hybrid-licensing-example.png)
+
 - Tagging Audit
+![tag-example](.images/resource-tag-example.png)
+
 - Practical FinOps / Automation examples
+
 - Cost Optmization insights for Storage Accounts, AKS, Log Analytics, Orphan resources, Recovery services App Services and Virtual Machines.
+![storageacc-example](.images/storageaccount-example.png)
 
 ## Requirements
 
