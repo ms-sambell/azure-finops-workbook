@@ -1,3 +1,4 @@
+![azure-logo](.images/azure-logo-384.png)
 # Azure FinOps Workbook (Work In Progress)
 
 ## Overview
@@ -8,7 +9,7 @@ Data within your Azure environment is visualized along with the relevant recomme
 
 > **Note:** The Workbook is provided as an example and is a work in progress.
 
-![workbook](.images/finops-workbook.png)
+![workbook](.images/finops-workbook-1.png)
 
 ## What's Included?
 
@@ -52,6 +53,7 @@ To use this Workbook you need to:
 - Fixing the AKS Node & SystemNode size checks (moving to Regex check)
 - Grammar
 - A PowerBI PBX for quick provisioning
+- Dark mode support
 
 ## Additional Documentation
 

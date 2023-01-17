@@ -257,14 +257,14 @@
           {
             "type": 1,
             "content": {
-              "json": "# Visualization\r\n\r\nTo ensure that a FinOps initiative is successful, the costs need to be visualized, tracked and understood. It's also imperitive to monitor the effectiveness of any Governance and FinOps automation. \r\n\r\n### Tools\r\n\r\nAzure Costs can be visualized by different tools. Each tool has it's own pros and cons. The below table provides generalised guidance for each tool. \r\n\r\n| Tool | Overview | Pros | Cons |\r\n| -- | -- | -- | -- |\r\n| Cost Management & Billing Service | This is the built in Azure billing tool and is available out of the box for free, for all Azure accounts. <br> <br> [Cost Management Tutorial](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/quick-acm-cost-analysis) | - Free <br> - Pre-configured and ready to use <br> - Can deep dive into Azure Costs | - Requires Azure RBAC access <br> - Requires the user to use the Azure Portal (may not be ideal for management) <br> - No out-of the box emailed report |\r\n| PowerBI | Power BI is a collection of software services, apps, and connectors that work together to turn your unrelated sources of data into coherent, visually immersive, and interactive insights. Your data may be an Excel spreadsheet, or a collection of cloud-based and on-premises hybrid data warehouses. Power BI lets you easily connect to your data sources, visualize and discover what's important, and share that with anyone or everyone you want. <br> <br> [What Is PowerBI](https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-overview) <br> [How to connect PowerBI to Azure Cost Management](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-connect-azure-cost-management) | - Curated views of data <br> - Scheduled Publishing of reports <br> - Shared organization view <br> - Can combine data from multi data sources <br> - Great for executives & non-technical people | - Requires additional licenses <br> - Requires setup to work <br> - Requires PowerBI skills to customise |\r\n| Azure Policy | Azure Policy is an Azure service that helps to enforce organizational standards and to assess compliance at-scale. <br> <br> [What is Azure Policy](https://learn.microsoft.com/en-us/azure/governance/policy/overview) | - Can audit and enforce FinOps standards <br> - Can automatically remediate Azure resources <br> | - Requires additional setup & skills |\r\n\r\n<br>\r\n"
+              "json": "# Visualization\r\n\r\nTo ensure that a FinOps initiative is successful, the costs need to be visualized, tracked and understood. It's also imperitive to monitor the effectiveness of any Governance and FinOps automation. \r\n\r\n### Tools\r\n\r\nAzure Costs can be visualized by different tools. Each tool has it's own pros and cons. The below table provides generalised guidance for each tool. \r\n\r\n| Tool | Overview | Pros | Cons |\r\n| -- | -- | -- | -- |\r\n| Cost Management & Billing Service | This is the built in Azure billing tool and is available out of the box for free, for all Azure accounts. <br> <br> [Cost Management Tutorial](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/quick-acm-cost-analysis) | - Free <br> - Pre-configured and ready to use <br> - Can deep dive into Azure Costs | - Requires Azure RBAC access <br> - Requires the user to use the Azure Portal (may not be ideal for management) <br> - No out-of the box emailed report |\r\n| PowerBI | Power BI is a collection of software services, apps, and connectors that work together to turn your unrelated sources of data into coherent, visually immersive, and interactive insights. Your data may be an Excel spreadsheet, or a collection of cloud-based and on-premises hybrid data warehouses. Power BI lets you easily connect to your data sources, visualize and discover what's important, and share that with anyone or everyone you want. <br> <br> [What Is PowerBI](https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-overview) <br> [How to connect PowerBI to Azure Cost Management](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-connect-azure-cost-management) | - Curated views of data <br> - Scheduled Publishing of reports <br> - Shared organization view <br> - Can combine data from multi data sources <br> - Great for executives & non-technical people | - Requires additional licenses <br> - Requires setup to work <br> - Requires PowerBI skills to customise |\r\n| Azure Policy | Azure Policy is an Azure service that helps to enforce organizational standards and to assess compliance at-scale. <br> <br> [What is Azure Policy](https://learn.microsoft.com/en-us/azure/governance/policy/overview) | - Can audit and enforce FinOps standards <br> - Can automatically remediate Azure resources <br> | - Requires additional setup <br> - Requires hands on technical skills |\r\n\r\n<br>\r\n"
             },
             "name": "text - 0"
           },
           {
             "type": 1,
             "content": {
-              "json": "## Tips\r\n\r\nWhen starting the FinOps journey, it's recommended to understand the current Cloud costs. This can be done by using the Cost Management & Billing service in Azure. \r\n\r\n1. Ensure costs can be tied to a tracked to a business entity`(department | team | business unit | Project)`. \r\n  - This is usually done by using `Tags` or `Boundaries (Subscriptions | resource groups)`. \r\n2. Look at the costs by Azure Service (review the top `5 most expensive services`).\r\n3. Assess the costs by Azure Resource (What are the `10 most expensive services`).\r\n4. Send out a monthly report to key stakeholders to ensure the costs are understood. \r\n5. Visualize Reservations, Savings Plans, Budgets and costs. \r\n6. Track budget alert frequency and if the alerts are being actioned. \r\n"
+              "json": "## Tips\r\n\r\nWhen starting the FinOps journey, it's recommended to understand the current Cloud costs. This can be done by using the Cost Management & Billing service in Azure. \r\n\r\n1. Ensure costs can be tied to a tracked to a business entity`(department | team | business unit | Project)`. \r\n  - This is usually done by using `Tags` or `Boundaries (Subscriptions | resource groups)`. \r\n2. Look at the costs by Azure Services (review the top `5 most expensive services`).\r\n3. Assess the costs by Azure Resources (What are the `10 most expensive services`).\r\n4. Send out a monthly report to key stakeholders to ensure the costs are understood. \r\n  - Offer time to run the teams through the report so they can understand their costs and any opportunities to optimize their spend. \r\n5. Visualize Reservations, Savings Plans, Budgets and costs. \r\n6. Track budget alert frequency and if the alerts are being actioned. \r\n7. Identify if a charge back model will be implemented. \r\n\r\n"
             },
             "name": "text - 1",
             "styleSettings": {
@@ -339,7 +339,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "## Budgets\r\n\r\nAzure Budgets provide the ability to proactively manage Cloud costs. Budgets can be used to `forecast` spend and to remediate any unexpected costs, before the bill comes through. \r\n\r\nBudgets can be created automatically through Infrastructure As Code (IaC) or using an Azure Runbook to apply default Budgets based on resource tags. \r\n\r\nBudgets need to be assessed on a cadence and potentially modified as usage grows.\r\n\r\n\r\n> **[Budget Tutorial](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets)**\r\n<br>\r\n\r\n> **This Workbook is unable to show Budgets, so navigate to the [Budget](https://ms.portal.azure.com/#view/Microsoft_Azure_CostManagement/Menu/~/budgets/open/budgets/openedBy/AzurePortal) view in Azure. **\r\n\r\n<br>\r\n## Budget Example\r\n\r\n"
+                    "json": "![budgets-icon](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/Cost-Budgets-small.png)\r\n\r\n# Budgets\r\n\r\nAzure Budgets provide the ability to proactively manage Cloud costs. Budgets can be used to `forecast` spend and to remediate any unexpected costs, before the bill comes through. \r\n\r\nBudgets can be created automatically through [Infrastructure As Code (IaC)](https://learn.microsoft.com/en-us/azure/templates/microsoft.costmanagement/budgets?pivots=deployment-language-bicep) or using an [Azure Runbook (example)](https://nbnm.medium.com/automate-creating-budgets-for-resource-groups-in-azure-81dd9d59cce7) to apply default Budgets based on resource tags. \r\n\r\nBudgets need to be assessed on a cadence and potentially modified as usage grows.\r\n\r\n\r\n> **[Budget Tutorial](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets)**\r\n<br>\r\n\r\n> **This Workbook is unable to show Budgets, so navigate to the [Budget](https://ms.portal.azure.com/#view/Microsoft_Azure_CostManagement/Menu/~/budgets/open/budgets/openedBy/AzurePortal) view in Azure. **\r\n\r\n<br>\r\n## Budget Example\r\n\r\n"
                   },
                   "name": "text - 0"
                 },
@@ -371,7 +371,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Hybrid Licensing\r\n\r\nFor customers with Software Assurance, Azure Hybrid Benefit allows you to apply your on-premises Windows licenses for resources running in on Azure. \r\n\r\nThis benefit is applicable for MSSQL resources (VMs, Managed and Server) aswell as Windows and Rhel Virtual Machines.  \r\n\r\n\r\n> **[Azure Hybrid Benefit for Windows Server licensing page](https://azure.microsoft.com/pricing/hybrid-use-benefit/)** <br>\r\n> **[Azure Hybrid Benefit for SQL](https://learn.microsoft.com/en-us/azure/azure-sql/azure-hybrid-benefit?view=azuresql&tabs=azure-portal)** <br>\r\n> **[Azure Hybrid Benefit Savings Calculation](https://azure.microsoft.com/en-gb/pricing/hybrid-benefit/#calculator)** <br> \r\n> **[Centrally Manage Hybrid Benefits in Azure](https://learn.microsoft.com/en-gb/azure/cost-management-billing/scope-level/)**<br> <br>\r\n> **Important: Always check and ensure you have available licenses before turning Hybrid Benefits on.**\r\n"
+                    "json": "# Hybrid Licensing\r\n\r\nFor customers with Software Assurance, Azure Hybrid Benefit allows you to apply your on-premises licenses for resources running in on Azure. \r\n\r\nThis benefit is applicable for Microsoft SQL servers (VMs, Managed and Server) aswell as Windows  and Rhel Virtual Machines.  \r\n\r\n\r\n> **[Azure Hybrid Benefit for Windows Server licensing page](https://azure.microsoft.com/pricing/hybrid-use-benefit/)** <br>\r\n> **[Azure Hybrid Benefit for SQL](https://learn.microsoft.com/en-us/azure/azure-sql/azure-hybrid-benefit?view=azuresql&tabs=azure-portal)** <br>\r\n> **[Azure Hybrid Benefit Savings Calculation](https://azure.microsoft.com/en-gb/pricing/hybrid-benefit/#calculator)** <br> \r\n> **[Centrally Manage Hybrid Benefits in Azure](https://learn.microsoft.com/en-gb/azure/cost-management-billing/scope-level/)**<br> <br>\r\n> **Important: Always check and ensure you have available licenses before turning Hybrid Benefits on.**\r\n"
                   },
                   "name": "text - 5"
                 },
@@ -516,7 +516,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Tagging\r\n\r\nResources and Resource Containers (subscriptions, ResourceGroups) can be tagged. This provides context to the resources and can be used to identify the SLA/Contact/Department/CostCenter (examples). \r\n\r\n## Examples\r\n\r\nYour organization should have a defined tagging standard and an understanding of how each tag (and value) will be used / why it's relevant. Be aware that some services in Azure have a `15 tag limit`. \r\n\r\n- **CostCenter:** How can I find the cost center ID internally? \r\n- **Contacts:** Technical and Business contact for the owner of the workload. \r\n\r\n### Usage Examples\r\n\r\n- **Good Example**: Use the `vendorContact` tag if  a vendor manages or supports a workload, consider adding a tag \r\n- **Bad Example**: A tag `applicationLayer` provides no real context or value to the solution.   \r\n\r\n## Audit\r\n\r\n- This page reviews the tagging keys used and identifies any untagged (resources/resource groups / subscriptions). \r\n- Unique keys help to visualize any tagging governance used. It's also important to ensure that the values are consistent (e.g. `environment: dev` and `environment: Development`)\r\n\r\n> **[For help and guidance on tagging](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)** \r\n<br>\r\n> **[Guidance to reconcile tagging](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/reconcile-tag-names-across-azure/ba-p/3453172)**\r\n<br>\r\n> **[Tag Resources with their Creators name](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/tagging-azure-resources-with-a-creator/ba-p/1479819)**"
+                    "json": "![tag-icon](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/Tags-small.png)\r\n# Tagging\r\n\r\nResources and Resource Containers (subscriptions, ResourceGroups and Management Groups) can be tagged. Tags are metadata that provide additional information about resources running in the Cloud. When tracking costs in the Cloud, resource tags are crucial as you can add a tag for `Contact/Department/CostCentercost`. \r\n\r\nTagging data will flow through to the billing information and can be visualized in PowerBI or the Cost Management service. This allows for a clear breakdown of cost of resources running in the Cloud. \r\n\r\n## Examples\r\n\r\nYour organization should have a defined tagging standard and an understanding of how each tag (and value) will be used / why it's relevant. Be aware that some services in Azure have a `15 tag limit`. \r\n\r\n- **CostCenter:** How can I find the cost center ID internally? \r\n- **Contacts:** Technical and Business contact for the owner of the workload. \r\n\r\n### Usage Examples\r\n\r\n- **Good Example**: Use the `vendorContact` tag if  a vendor manages or supports a workload, consider adding a tag \r\n- **Bad Example**: A tag `applicationLayer` provides no real context or value to the solution.   \r\n\r\n## Audit\r\n\r\n- This page reviews the tagging keys used and identifies any untagged (resources/resource groups / subscriptions). \r\n- Unique keys help to visualize any tagging governance used. It's also important to ensure that the values are consistent (e.g. `environment: dev` and `environment: Development`)\r\n\r\n> **[For help and guidance on tagging](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)** \r\n<br>\r\n> **[Guidance to reconcile tagging](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/reconcile-tag-names-across-azure/ba-p/3453172)**\r\n<br>\r\n> **[Tag Resources with their Creators name](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/tagging-azure-resources-with-a-creator/ba-p/1479819)**"
                   },
                   "name": "text - 2"
                 },
@@ -1032,7 +1032,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Azure Advisor\r\n\r\nAdvisor provides general cost savings recommendations for your workloads. These are just recommendations that need to be investigated on a cadence. If the recommendations aren't applicable, they should be `suppressed`. For a detailed view and to manage Advisor recommendations, open the **[Advisor](https://ms.portal.azure.com/#view/Microsoft_Azure_Expert/AdvisorMenuBlade/~/score)** service. \r\n\r\n> **[Advisor Overview](https://learn.microsoft.com/en-au/azure/advisor/advisor-overview)** <br>\r\n> **[Actioning Advisor Recommendations](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-opt-recommendations)** <br>\r\n> **[Guide to using Azure Advisor - Blog Post](https://techcommunity.microsoft.com/t5/azure-architecture-blog/3-reasons-to-optimize-your-workloads-with-azure-advisor/ba-p/3674044)**"
+                    "json": "![advisor-logo](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/advisor-logo-small.png) \r\n\r\n# Azure Advisor\r\n\r\nAdvisor provides general cost savings recommendations for your workloads. These are `recommendations` that need to be investigated on a scheduled cadence. If the recommendations aren't applicable, they should be `suppressed`. \r\n\r\nFor a detailed view and to manage Advisor recommendations, open the **[Advisor](https://ms.portal.azure.com/#view/Microsoft_Azure_Expert/AdvisorMenuBlade/~/score)** service. \r\n\r\n> **[Advisor Overview](https://learn.microsoft.com/en-au/azure/advisor/advisor-overview)** <br>\r\n> **[Actioning Advisor Recommendations](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-opt-recommendations)** <br>\r\n> **[Guide to using Azure Advisor - Blog Post](https://techcommunity.microsoft.com/t5/azure-architecture-blog/3-reasons-to-optimize-your-workloads-with-azure-advisor/ba-p/3674044)**"
                   },
                   "name": "text - 1"
                 },
@@ -1194,7 +1194,7 @@
                           "version": "KqlItem/1.0",
                           "query": "advisorresources\r\n| where type == \"microsoft.advisor/recommendations\"\r\n| where tostring (properties.category) has \"Cost\"\r\n| where isnotnull(properties.suppressionIds) \r\n| project AffectedResource=tostring(properties.resourceMetadata.resourceId),Impact=properties.impact,Recommendation=tostring(properties.shortDescription.problem), Message = properties.extendedProperties.recommendationMessage, ['Annual Savings'] = properties.extendedProperties.annualSavingsAmount,resourceGroup,subscriptionId //,AdditionaInfo=properties.extendedProperties",
                           "size": 3,
-                          "noDataMessage": "You are following all of our cost recommendations for Compute",
+                          "noDataMessage": "No suppressed Advisor recommendations",
                           "noDataMessageStyle": 3,
                           "showExportToExcel": true,
                           "queryType": 1,
@@ -1366,7 +1366,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Virtual Machines\r\n\r\nVirtual Machines are common foundational building blocks for the Cloud.\r\n\r\n- **[ARM processors](https://azure.microsoft.com/en-us/blog/now-in-preview-azure-virtual-machines-with-ampere-altra-armbased-processors/)**: A new CPU architecture is available in Azure which could be leveraged to save up to `50%`. \r\n- **[Spot Instances](https://azure.microsoft.com/en-us/products/virtual-machines/spot/)**: Use Spot Virtual Machines to leverage unused compute capacity in Azure for a significant cost savings.\r\n- **[Stop/Start Virtual Machines](https://learn.microsoft.com/en-us/azure/automation/automation-solution-vm-management)**: Consider stopping and starting virtual machines over night / weekeneds.\r\n- **[Rightsize](https://azure.microsoft.com/en-in/blog/resize-virtual-machines/#:~:text=Resize%20virtual%20machines%201%20The%20region%20in%20which,The%20deployment%20model%20used%20for%20the%20VM.%20)**: Review the CPU and Memory utilisation for Virtual Machines in your environment to see if they can be downsized. \r\n- **[Autoscaling](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)**: Review using Virtual Machine Scale Sets and configuring autoscaling to horizontally scale.\r\n- **[Reservations](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/save-compute-costs-reservations)**: If you have consistent resource usage that supports reservations, buying a reservation gives you the option to reduce your costs.\r\n- **[Savings Plans](https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/savings-plan-compute-overview)**: An Azure savings plan helps you save money by allowing you to commit to a fixed hourly spend on compute services for one-year or three-year terms.\r\n- **[New VM SKUs / Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes)**: Look at leveraging new Virtual Machine types and sizes. Upgrading to a newer SKU could reduce the cost and provide improvements.\r\n\r\n> **Note: This page is a work in progress**"
+                    "json": "![vm-icon](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/vm-small.png)\r\n\r\n# Virtual Machines\r\n\r\nVirtual Machines are common foundational building blocks for the Cloud.\r\n\r\n- **[ARM processors](https://azure.microsoft.com/en-us/blog/now-in-preview-azure-virtual-machines-with-ampere-altra-armbased-processors/)**: A new CPU architecture is available in Azure which could be leveraged to save up to `50%`. \r\n- **[Spot Instances](https://azure.microsoft.com/en-us/products/virtual-machines/spot/)**: Use Spot Virtual Machines to leverage unused compute capacity in Azure for a significant cost savings.\r\n- **[Stop/Start Virtual Machines](https://learn.microsoft.com/en-us/azure/automation/automation-solution-vm-management)**: Consider stopping and starting virtual machines over night / weekeneds.\r\n- **[Rightsize](https://azure.microsoft.com/en-in/blog/resize-virtual-machines/#:~:text=Resize%20virtual%20machines%201%20The%20region%20in%20which,The%20deployment%20model%20used%20for%20the%20VM.%20)**: Review the CPU and Memory utilisation for Virtual Machines in your environment to see if they can be downsized. \r\n- **[Autoscaling](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)**: Review using Virtual Machine Scale Sets and configuring autoscaling to horizontally scale.\r\n- **[Reservations](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/save-compute-costs-reservations)**: If you have consistent resource usage that supports reservations, buying a reservation gives you the option to reduce your costs.\r\n- **[Savings Plans](https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/savings-plan-compute-overview)**: An Azure savings plan helps you save money by allowing you to commit to a fixed hourly spend on compute services for one-year or three-year terms.\r\n- **[New VM SKUs / Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes)**: Look at leveraging new Virtual Machine types and sizes. Upgrading to a newer SKU could reduce the cost and provide improvements.\r\n\r\n> **Note: This page is a work in progress**"
                   },
                   "name": "text - 0"
                 },
@@ -1406,14 +1406,14 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Recovery Services\r\n\r\nYou can use the Azure Backup service to back up data to the Microsoft Azure cloud platform.\r\n\r\n- **[Data Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-architecture#where-is-data-backed-up)**: The data can be stored Geographically (GRS: 6 copies in two regions) or locally (LRS: 3 copies in 1 region)\r\n- **[Backup Policies](https://learn.microsoft.com/en-us/azure/backup/backup-architecture#backup-policy-essentials)**: Check the data retention set in the policies.\r\n- **Backup Storage Consumed**: Check the size of each recovery services vault for anomalies or where the data redundancy could be toggled. "
+                    "json": "![recovery-icon](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/Recovery-Services-Vaults-small.png)\r\n\r\n# Recovery Services\r\n\r\nYou can use the Azure Backup service to back up data to the Microsoft Azure cloud platform.\r\n\r\n- **[Data Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-architecture#where-is-data-backed-up)**: The data can be stored Geographically (GRS: 6 copies in two regions) or locally (LRS: 3 copies in 1 region)\r\n- **[Backup Policies](https://learn.microsoft.com/en-us/azure/backup/backup-architecture#backup-policy-essentials)**: Check the data retention set in the policies.\r\n- **Backup Storage Consumed**: Check the size of each recovery services vault for anomalies or where the data redundancy could be toggled. "
                   },
                   "name": "text - 0"
                 },
                 {
                   "type": 1,
                   "content": {
-                    "json": "## Recovery Services Vault - Replications\r\n\r\n- **Sku Tier**:\r\n- **Sku Name**:\r\n\r\n> **Select on of the vaults to see the replication type specified. **",
+                    "json": "## Recovery Services Vault - Replications\r\n\r\nThe vaults listed in the list show any Backup Policies for an Azure Data Source and the retention set for this policy. \r\n\r\n- Investigate the data retention for each policy (ensure data isn't kept longer than it needs to be, especially if it can be recreated). \r\n- Check the replication type to ensure the appropriate amount of copies are retained. \r\n\r\n> **Select on of the vaults to see the replication type specified. **",
                     "style": "info"
                   },
                   "customWidth": "20",
@@ -1423,7 +1423,7 @@
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "ResourceContainers | where type =~ 'Microsoft.Resources/subscriptions' | extend SubscriptionName=name | join ( Resources | where type == 'microsoft.recoveryservices/vaults' | extend recoveryvault=id, skuTier=tostring(sku['tier']),skuName=tostring(sku['name']) , RecoveryVaultName=name, RecoveryVaultLocation=location, RVRG=resourceGroup) on subscriptionId \r\n    | order by id asc\r\n    | project recoveryvault,RecoveryVaultName, RVRG ,skuTier ,skuName,subscriptionId, SubscriptionName",
+                    "query": "ResourceContainers \r\n| where type =~ 'Microsoft.Resources/subscriptions' \r\n| extend SubscriptionName=name \r\n| join ( Resources | where type == 'microsoft.recoveryservices/vaults' | extend recoveryvault=id, skuTier=tostring(sku['tier']),skuName=tostring(sku['name']) , RecoveryVaultName=name, RecoveryVaultLocation=location, RVRG=resourceGroup) on subscriptionId \r\n| join ( \r\nRecoveryServicesResources\r\n| where type == 'microsoft.recoveryservices/vaults/backuppolicies'\r\n| extend recoveryvault = trim_end( @\"\\/backupPolicies.*\", id)\r\n| extend datasourceType = case(type == 'microsoft.recoveryservices/vaults/backuppolicies', properties.backupManagementType,type == 'microsoft.dataprotection/backupVaults/backupPolicies',properties.datasourceTypes[0],'--')\r\n| extend retentionPolicy =  properties.retentionPolicy\r\n| project backupPolicy = name, recoveryvault,resourceGroup,datasourceType, retentionPolicy\r\n) on recoveryvault\r\n| project recoveryvault, backupPolicy, RVRG ,skuTier ,skuName,subscriptionId, datasourceType,  retentionPolicy, RecoveryVaultName",
                     "size": 2,
                     "title": "Recovery Vaults Replication ",
                     "exportedParameters": [
@@ -1457,11 +1457,15 @@
                     "gridSettings": {
                       "formatters": [
                         {
-                          "columnMatch": "RecoveryVaultName",
-                          "formatter": 5
+                          "columnMatch": "$gen_group",
+                          "formatter": 13,
+                          "formatOptions": {
+                            "linkTarget": null,
+                            "showIcon": true
+                          }
                         },
                         {
-                          "columnMatch": "RVRG",
+                          "columnMatch": "recoveryvault",
                           "formatter": 5
                         },
                         {
@@ -1475,13 +1479,31 @@
                         {
                           "columnMatch": "SubscriptionName",
                           "formatter": 5
+                        },
+                        {
+                          "columnMatch": "RecoveryVaultName",
+                          "formatter": 5
+                        },
+                        {
+                          "columnMatch": "recoveryvault1",
+                          "formatter": 13,
+                          "formatOptions": {
+                            "linkTarget": null,
+                            "showIcon": true
+                          }
                         }
-                      ]
+                      ],
+                      "hierarchySettings": {
+                        "treeType": 1,
+                        "groupBy": [
+                          "recoveryvault"
+                        ]
+                      }
                     },
                     "sortBy": []
                   },
                   "customWidth": "60",
-                  "name": "query - 1"
+                  "name": "query - 1 - Copy"
                 },
                 {
                   "type": 3,
@@ -1513,7 +1535,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Azure App Services & Plans\r\n\r\n- **[App Service Environments v3 (ASEv3)](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/reservation-discount-app-service)**: Evaluate using ASEv3s as they allow for reservation to be purchased and can be cheaper to run.\r\n- **[Autoscaling](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?toc=%2Fazure%2Fapp-service%2Ftoc.json)**: Ensure App Services are using AutoScaling to horizontally scale based on load.\r\n- **[Plan Utilisation](https://learn.microsoft.com/en-us/azure/app-service/monitor-app-service)**: Check if plans are being fully utilised. Plans that are running a `Premium` or `Isolated` SKU can run multiple App Services, so it may be worth reviewing consolidating the apps onto a single plan (consider migrating to asev3).\r\n- **Status**: Check if there's any `Stopped` apps. \r\n- **[Stampfees](https://azure.microsoft.com/en-us/pricing/details/app-service/windows)**: Isolated SKU App Service Plans incur a `Stamp fee` for each environment.\r\n- **[Elastic Function App SKUs](https://learn.microsoft.com/en-us/azure/azure-functions/functions-premium-plan?tabs=portal)**: Consider using an Elastic SKU rather than a static SKU. "
+                    "json": "![app-service-icon](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/App-Service-Plans-small.png)\r\n\r\n# Azure App Services & Plans\r\n\r\n- **[App Service Environments v3 (ASEv3)](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/reservation-discount-app-service)**: Evaluate using ASEv3s as they allow for reservation to be purchased and can be cheaper to run.\r\n- **[Autoscaling](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?toc=%2Fazure%2Fapp-service%2Ftoc.json)**: Ensure App Services are using AutoScaling to horizontally scale based on load.\r\n- **[Plan Utilisation](https://learn.microsoft.com/en-us/azure/app-service/monitor-app-service)**: Check if plans are being fully utilised. Plans that are running a `Premium` or `Isolated` SKU can run multiple App Services, so it may be worth reviewing consolidating the apps onto a single plan (consider migrating to asev3).\r\n- **Status**: Check if there's any `Stopped` apps. \r\n- **[Stampfees](https://azure.microsoft.com/en-us/pricing/details/app-service/windows)**: Isolated SKU App Service Plans incur a `Stamp fee` for each environment.\r\n- **[Elastic Function App SKUs](https://learn.microsoft.com/en-us/azure/azure-functions/functions-premium-plan?tabs=portal)**: Consider using an Elastic SKU rather than a static SKU. "
                   },
                   "name": "text - 0"
                 },
@@ -1627,8 +1649,8 @@
                     "version": "KqlItem/1.0",
                     "query": "{\"version\":\"Merge/1.0\",\"merges\":[{\"id\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\",\"mergeType\":\"inner\",\"leftTable\":\"query - AppServiceplandetails\",\"rightTable\":\"query - WebFunctionStatus\",\"leftColumn\":\"planId\",\"rightColumn\":\"AppServicePlan\"}],\"projectRename\":[{\"originalName\":\"[query - WebFunctionStatus].WebAppId\",\"mergedName\":\"WebAppId\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - WebFunctionStatus].Type\",\"mergedName\":\"Type\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - WebFunctionStatus].WebAppLocation\",\"mergedName\":\"WebAppLocation\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - WebFunctionStatus].Status\",\"mergedName\":\"Status\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].SubscriptionName\",\"mergedName\":\"SubscriptionName\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - WebFunctionStatus].WebAppRG\",\"mergedName\":\"ResourceGroup\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].type\",\"mergedName\":\"type\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].tenantId\",\"mergedName\":\"tenantId\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].kind\",\"mergedName\":\"kind\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].location\",\"mergedName\":\"location\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].subscriptionId\",\"mergedName\":\"subscriptionId\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].managedBy\",\"mergedName\":\"managedBy\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].sku\",\"mergedName\":\"sku\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].plan\",\"mergedName\":\"plan\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].skuname\",\"mergedName\":\"skuname\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].skutier\",\"mergedName\":\"skutier\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].workers\",\"mergedName\":\"workers\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].maxworkers\",\"mergedName\":\"maxworkers\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].properties\",\"mergedName\":\"properties\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].tags\",\"mergedName\":\"tags\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].identity\",\"mergedName\":\"identity\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].zones\",\"mergedName\":\"zones\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].extendedLocation\",\"mergedName\":\"extendedLocation\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].planId\",\"mergedName\":\"planId\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].PredictiveAutoscale\",\"mergedName\":\"PredictiveAutoscale\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].AutoScaleProfiles\",\"mergedName\":\"AutoScaleProfiles\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].resourceGroup1\",\"mergedName\":\"resourceGroup1\",\"fromId\":\"unknown\"},{\"originalName\":\"[query - AppServiceplandetails].name\",\"mergedName\":\"name\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].webRG\",\"mergedName\":\"webRG\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].planId1\",\"mergedName\":\"planId1\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - AppServiceplandetails].resourceGroup\",\"mergedName\":\"resourceGroup\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - WebFunctionStatus].WebAppName\",\"mergedName\":\"WebAppName\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - WebFunctionStatus].AppServicePlan\",\"mergedName\":\"AppServicePlan\",\"fromId\":\"3fddbdd9-c4eb-46ae-b6b0-654c0da7b1a8\"},{\"originalName\":\"[query - WebFunctionStatus].SubscriptionName\"}]}",
                     "size": 2,
-                    "title": "Web Apps",
-                    "noDataMessage": "You have no WebApps!",
+                    "title": "App Services by Plan",
+                    "noDataMessage": "You have no Apps!",
                     "showExportToExcel": true,
                     "queryType": 7,
                     "gridSettings": {
@@ -1739,7 +1761,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# StorageAccounts\r\n\r\nStorage accounts are occassionally forgotten about but can cause bill shock. There's different SKUs, durability, capacity reservation and lifecycle options available that can greatly reduce the cost. \r\n\r\n- **[LifeCycle Policies](https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-policy-configure?tabs=azure-portal)**: Automatically move unused blobs to lower storage tiers for cost savings (or delete them). \r\n- **[Capacity Reservations](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity)**: `Standard` sku storage accounts are applicable for capacity reservations starting at 100TB for a `38%` discount.\r\n- **[Durability](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)**: Storageaccounts have various durability options. This refers to how many copies of the data are stored. Lower environments may not need 6 copies (GRS). \r\n\r\n> **The query below checks the size of each Storage Account for the specified timerange and requires time to load**\r\n"
+                    "json": "![storage-acc-logo](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/Storage-Accounts-small.png)\r\n\r\n# StorageAccounts\r\n\r\nStorage accounts are occassionally forgotten about but can cause bill shock. There's different SKUs, durability, capacity reservation and lifecycle options available that can greatly reduce the cost. \r\n\r\n- **[LifeCycle Policies](https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-policy-configure?tabs=azure-portal)**: Automatically move unused blobs to lower storage tiers for cost savings (or delete them). \r\n- **[Capacity Reservations](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity)**: `Standard` sku storage accounts are applicable for capacity reservations starting at 100TB for a `38%` discount.\r\n- **[Durability](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)**: Storageaccounts have various durability options. This refers to how many copies of the data are stored. Lower environments may not need 6 copies (GRS). \r\n\r\n> **The query below checks the size of each Storage Account for the specified timerange and requires time to load**\r\n"
                   },
                   "name": "text - 11"
                 },
@@ -2158,7 +2180,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Log Analytics Workspaces\r\n\r\nLog Analytics workspaces are where logs can be stored and queried within Azure. A few services (sentinel, app insights, etc) use it as the backing data store. \r\n\r\nWhile evaluating the cost for these services review the:\r\n\r\n- **[Retention](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-configure?tabs=portal-1%2Cportal-2#set-a-tables-log-data-plan)**: Evaluate if the retention period is required, as any data stored above the default ingestion time, has additional costs. Tables can be configured with custom retention periods (useful for metrics or logs that don't have retention requirements). \r\n- **[Basic Logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-configure?tabs=portal-1%2Cportal-2#when-should-i-use-basic-logs)**: A type of Log Analytics storage that provides reduced cost for logs in a table and reduced query capabilities. \r\n- **[Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-insights-overview)**: The Insights tab of each of the Log Analytics workspaces can be used to deep dive into the usage and cost of the workspace.\r\n- **[Commitment Tiers](https://learn.microsoft.com/en-US/azure/azure-monitor/logs/cost-logs#commitment-tiers)**: Workspaces can be configured with a commitment tier (e.g. 100gb per day), these are similar to reservations and provide a discounted (up to 30%) price for log ingestion.\r\n\r\n> **The query below checks the size of each Log Analytics workspace for the specified timerange and requires time to load**"
+                    "json": "![law-icon](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/Log-Analytics-Workspaces-small.png)\r\n\r\n# Log Analytics Workspaces\r\n\r\nLog Analytics workspaces are where logs can be stored and queried within Azure. A few services (sentinel, app insights, etc) use it as the backing data store. \r\n\r\nWhile evaluating the cost for these services review the:\r\n\r\n- **[Retention](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-configure?tabs=portal-1%2Cportal-2#set-a-tables-log-data-plan)**: Evaluate if the retention period is required, as any data stored above the default ingestion time, has additional costs. Tables can be configured with custom retention periods (useful for metrics or logs that don't have retention requirements). \r\n- **[Basic Logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-configure?tabs=portal-1%2Cportal-2#when-should-i-use-basic-logs)**: A type of Log Analytics storage that provides reduced cost for logs in a table and reduced query capabilities. \r\n- **[Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-insights-overview)**: The Insights tab of each of the Log Analytics workspaces can be used to deep dive into the usage and cost of the workspace.\r\n- **[Commitment Tiers](https://learn.microsoft.com/en-US/azure/azure-monitor/logs/cost-logs#commitment-tiers)**: Workspaces can be configured with a commitment tier (e.g. 100gb per day), these are similar to reservations and provide a discounted (up to 30%) price for log ingestion.\r\n\r\n> **The query below checks the size of each Log Analytics workspace for the specified timerange and requires time to load**"
                   },
                   "name": "text - 7"
                 },
@@ -2812,7 +2834,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Orphan Resources\r\n\r\nResources that are detached or unused that are active and costing money. These resources may still be in use and need to be investigated before being deleted. \r\n\r\n#### Resources to Manually Check\r\n\r\n- EventHubs\r\n\r\n<br>\r\n\r\n> **Expand the lists below to investigate.**"
+                    "json": "# Orphan Resources\r\n\r\nResources that are detached or unused that are active and costing money. In the cloud you pay for any resources you have provisioned, even if they're not being actively used. \r\n\r\n> Note: These resources may still be in use and need to be investigated before being deleted. \r\n\r\n#### Resources to Manually Check\r\n\r\n- EventHubs\r\n\r\n<br>\r\n\r\n> **Expand the lists below to investigate.**"
                   },
                   "name": "text - 3"
                 },
@@ -2880,7 +2902,7 @@
                         "type": 3,
                         "content": {
                           "version": "KqlItem/1.0",
-                          "query": "Resources\r\n| where type == \"microsoft.network/publicipaddresses\"\r\n| where properties.ipConfiguration == \"\" and properties.natGateway == \"\"\r\n| extend Details = pack_all()\r\n| project Resource=id, resourceGroup, location, subscriptionId, tostring(sku.name), AllocationMethod=tostring(properties.publicIPAllocationMethod), tags, Details",
+                          "query": "Resources\r\n| where type == \"microsoft.network/publicipaddresses\"\r\n| where properties.ipConfiguration == \"\" and properties.natGateway == \"\"\r\n| extend Details = pack_all()\r\n| project Resource=id, resourceGroup, location, subscriptionId, tostring(sku.name), AllocationMethod=tostring(properties.publicIPAllocationMethod)",
                           "size": 0,
                           "noDataMessage": "No oprhan Public IPs found",
                           "showExportToExcel": true,
@@ -2907,15 +2929,6 @@
                               {
                                 "columnMatch": "subscriptionId",
                                 "formatter": 5
-                              },
-                              {
-                                "columnMatch": "Details",
-                                "formatter": 7,
-                                "formatOptions": {
-                                  "linkTarget": "CellDetails",
-                                  "linkLabel": "🔍 View Details",
-                                  "linkIsContextBlade": true
-                                }
                               }
                             ],
                             "rowLimit": 1000,
@@ -2954,10 +2967,6 @@
                               {
                                 "columnId": "sku_name",
                                 "label": "Type"
-                              },
-                              {
-                                "columnId": "tags",
-                                "label": "Tags"
                               }
                             ]
                           },
@@ -3024,12 +3033,13 @@
                     "groupType": "editable",
                     "title": "Orphan App Service Plans",
                     "expandable": true,
+                    "expanded": true,
                     "items": [
                       {
                         "type": 3,
                         "content": {
                           "version": "KqlItem/1.0",
-                          "query": "resources\r\n| where type =~ \"microsoft.web/serverfarms\"\r\n| where properties.numberOfSites == 0\r\n| extend Details = pack_all()\r\n| project Resource=id, resourceGroup, location, subscriptionId, Sku=sku.name, Tier=sku.tier, tags ,Details",
+                          "query": "resources\r\n| where type =~ \"microsoft.web/serverfarms\"\r\n| where properties.numberOfSites == 0\r\n| extend Details = pack_all()\r\n| project Resource=id, resourceGroup, location, subscriptionId, Sku=sku.name, Tier=sku.tier",
                           "size": 3,
                           "noDataMessage": "No oprhan App Service Plans found",
                           "showExportToExcel": true,
@@ -3044,27 +3054,17 @@
                                 "columnMatch": "$gen_group",
                                 "formatter": 13,
                                 "formatOptions": {
-                                  "linkTarget": "Resource",
-                                  "linkIsContextBlade": true,
+                                  "linkTarget": null,
                                   "showIcon": true
                                 }
-                              },
-                              {
-                                "columnMatch": "subscriptionId",
-                                "formatter": 5
                               },
                               {
                                 "columnMatch": "Resource",
                                 "formatter": 5
                               },
                               {
-                                "columnMatch": "Details",
-                                "formatter": 7,
-                                "formatOptions": {
-                                  "linkTarget": "CellDetails",
-                                  "linkLabel": "🔍 View Details",
-                                  "linkIsContextBlade": true
-                                }
+                                "columnMatch": "subscriptionId",
+                                "formatter": 5
                               }
                             ],
                             "rowLimit": 1000,
@@ -3089,10 +3089,6 @@
                               {
                                 "columnId": "subscriptionId",
                                 "label": "Subscription"
-                              },
-                              {
-                                "columnId": "tags",
-                                "label": "Tags"
                               }
                             ]
                           },
@@ -3844,6 +3840,10 @@
                       "rowLimit": 10000,
                       "labelSettings": [
                         {
+                          "columnId": "Subscription",
+                          "label": "Subscription"
+                        },
+                        {
                           "columnId": "microsoft.network/azurefirewalls--DataProcessed",
                           "label": "Data processed (Sum)"
                         },
@@ -3883,7 +3883,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "# Azure Kubernetes Service\r\n\r\nAzure Kubernetes Service (AKS) is a complex system and all recommendations need to be investigated to confirm they're applicable for your usecase. \r\n\r\n- **[Cluster Autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler)**: Enable cluster autoscaler to automatically adjust the number of agent nodes in response to resource constraints.\r\n- **[Spot NodePool](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool)**: Consider using Azure Spot VMs for workloads that can handle interruptions, early terminations, or evictions. For example, workloads such as batch processing jobs, development and testing environments, and large compute workloads may be good candidates to be scheduled on a spot node pool.\r\n- **[Horizontal Pod Autoscalers](https://learn.microsoft.com/en-us/azure/aks/concepts-scale)**: Utilize the Horizontal pod autoscaler to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.\r\n- **[Stop/Start Feature](https://learn.microsoft.com/en-us/azure/aks/start-stop-cluster)**: Use the Start/Stop feature in Azure Kubernetes Services (AKS) to toggle the cluster or a specific NodePool.\r\n- **[System NodePool Recommendations](https://learn.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools)**: System Node Pools are used to run cluster critical workloads. Applications should run on UserNodes. Microsoft provides explicit guidance on sizing a System NodePool. \r\n- **[Reservations](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/manage-reserved-vm-instance)**: Review reservations for the System Node Pool instances and `base` user pool nodes (instances that run 24/7 and aren't added based on load).\r\n- **[AKS Paid SKU - Lower Environments](https://learn.microsoft.com/en-us/azure/aks/uptime-sla)**: Consider decreasing the clusters availability in lower environments (Tier: Free vs Paid).\r\n- **[Node Scaling](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler)**: When a cluster has autoscaling enabled the nodeCount should grow above the `minCount` value. If the `minCount` and `currentCount` are always the same size, the cluster may be over provisioned. \r\n- **[Evaluate Pod Request/Limit settings](https://learn.microsoft.com/en-us/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits)**: The cluster autoscaler works on pending pods. When a pod starts the Kubernetes Scheduler looks at the request/limit to determine if it can schedule the workload. If these values are set to high, it causes the cluster to be underutilised (low CPU and Memory consumption).\r\n- **[Max Pods](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node)**: Nodepools are created with a `maxPods` count. Once this count is hit pods cannot be scheduled on a node. So if this value is too low, it may cause waste (remember each Node has atleast 6 pods due to `daemonsets`).\r\n- **[AKS Logging - Blog](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/aks-container-insights-logging-level-and-associated-costs/ba-p/3684224)**: Applications running on AKS can cause unexpected logging costs. \r\n\r\n",
+                    "json": "![aks-logo](https://finopsworkbookcontent.blob.core.windows.net/finops-workbook/Kubernetes-Services-small.png)\r\n# Azure Kubernetes Service\r\n\r\nAzure Kubernetes Service (AKS) is a complex system and all recommendations need to be investigated to confirm they're applicable for your usecase. \r\n\r\n- **[Cluster Autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler)**: Enable cluster autoscaler to automatically adjust the number of agent nodes in response to resource constraints.\r\n- **[Spot NodePool](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool)**: Consider using Azure Spot VMs for workloads that can handle interruptions, early terminations, or evictions. For example, workloads such as batch processing jobs, development and testing environments, and large compute workloads may be good candidates to be scheduled on a spot node pool.\r\n- **[Horizontal Pod Autoscalers](https://learn.microsoft.com/en-us/azure/aks/concepts-scale)**: Utilize the Horizontal pod autoscaler to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.\r\n- **[Stop/Start Feature](https://learn.microsoft.com/en-us/azure/aks/start-stop-cluster)**: Use the Start/Stop feature in Azure Kubernetes Services (AKS) to toggle the cluster or a specific NodePool.\r\n- **[System NodePool Recommendations](https://learn.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools)**: System Node Pools are used to run cluster critical workloads. Applications should run on UserNodes. Microsoft provides explicit guidance on sizing a System NodePool. \r\n- **[Reservations](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/manage-reserved-vm-instance)**: Review reservations for the System Node Pool instances and `base` user pool nodes (instances that run 24/7 and aren't added based on load).\r\n- **[AKS Paid SKU - Lower Environments](https://learn.microsoft.com/en-us/azure/aks/uptime-sla)**: Consider decreasing the clusters availability in lower environments (Tier: Free vs Paid).\r\n- **[Node Scaling](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler)**: When a cluster has autoscaling enabled the nodeCount should grow above the `minCount` value. If the `minCount` and `currentCount` are always the same size, the cluster may be over provisioned. \r\n- **[Evaluate Pod Request/Limit settings](https://learn.microsoft.com/en-us/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits)**: The cluster autoscaler works on pending pods. When a pod starts the Kubernetes Scheduler looks at the request/limit to determine if it can schedule the workload. If these values are set to high, it causes the cluster to be underutilised (low CPU and Memory consumption).\r\n- **[Max Pods](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node)**: Nodepools are created with a `maxPods` count. Once this count is hit pods cannot be scheduled on a node. So if this value is too low, it may cause waste (remember each Node has atleast 6 pods due to `daemonsets`).\r\n- **[AKS Logging - Blog](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/aks-container-insights-logging-level-and-associated-costs/ba-p/3684224)**: Applications running on AKS can cause unexpected logging costs. \r\n\r\n",
                     "style": "info"
                   },
                   "name": "text - 11"
@@ -4146,7 +4146,7 @@
                     ],
                     "timeContextFromParameter": "TimeRange",
                     "timeContext": {
-                      "durationMs": 0
+                      "durationMs": 14400000
                     },
                     "metrics": [
                       {
@@ -4700,7 +4700,7 @@
           {
             "type": 1,
             "content": {
-              "json": "# Overview\r\n\r\nThis workbook provides insights into implementing and managing FinOps in Azure. It's meant to be used as a quickstart for anyone using the Cloud. \r\n\r\n## Guidance\r\n\r\nFinOps is a continual journey that requires a collaborative effort from an organizations technology team. Cost Optmization is important, but it's only part of the FinOps journey. We also need to look at governance controls, proative monitoring, improving cost visibility and ensure that teams have the required skills to optimize their Cloud spend. \r\n\r\n\r\nThe following links provide perscriptive guidance and recommendations on optimising your Azure costs. \r\n\r\n- [Azure Cloud Adoption Framework - Cost Best Practices](https://learn.microsoft.com/en-gb/azure/cloud-adoption-framework/govern/cost-management/best-practices)\r\n- [Azure Well Architected Framework - Cost Pillar](https://learn.microsoft.com/en-us/azure/architecture/framework/cost/)\r\n- [FinOps Foundation](https://www.finops.org/introduction/what-is-finops/)\r\n\r\n### Workbook Breakdown\r\n\r\n- **Governance**: Audits the use of Azure goverance tools that enable FinOps. \r\n- **Visualization**: Check that visualization services are in use and provides recommendations for using PowerBI and the Cost Management Billing service. \r\n- **Cost Optimization**: Insights into common Azure services and references on how to optimize the cost. \r\n- **Practical Examples**: Examples on how to use Azure Services to enforce and automate FinOps practices.\r\n\r\n\r\n### Workbook Requirements\r\n\r\n- `Read Only` Azure RBAC access over the subscription and resources you're investigating.\r\n\r\n### Free Online Training\r\n\r\nFree publicly available training provided by Microsoft.\r\n\r\n  - [Azure Cost Fundamentals](https://learn.microsoft.com/en-us/training/paths/describe-azure-management-governance/)\r\n  - [Control Azure Spend](https://learn.microsoft.com/en-us/training/paths/control-spending-manage-bills/)\r\n  - [Implement FinOps for Azure](https://info.microsoft.com/ww-ondemand-implement-finops-for-azure.html?lcid=en-us)\r\n\r\n### Additional Resources\r\n\r\nThe following articles are published on the Microsoft tech blogs and Ignite videos.\r\n\r\n- Cost Optimisation In the Cloud - [part 1](https://techcommunity.microsoft.com/t5/azure-architecture-blog/part-1-cost-optimisation-in-the-cloud-practical-design-steps-for/ba-p/3574431), [part 2](https://techcommunity.microsoft.com/t5/azure-architecture-blog/part-2-infra-cost-optimisation-in-the-cloud-practical-design/ba-p/3602797) & [part 3](https://techcommunity.microsoft.com/t5/azure-architecture-blog/part-3-architectural-cost-optimisation-practical-design-steps/ba-p/3708993)\r\n- [Azure Cost Optimisation](https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-cost-optimisation/ba-p/3624817)\r\n- [How to reduce your Azure Invoice](https://techcommunity.microsoft.com/t5/azure/how-to-reduce-your-azure-invoice/m-p/3686772)\r\n- [Optimize your investment on Azure](https://www.youtube.com/watch?v=JebcsGuYc7E)\r\n- [Azure FinOps Guide - 2023](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/the-azure-finops-guide/ba-p/3704132)\r\n\r\n\r\n\r\n"
+              "json": "# Overview\r\n\r\nThis workbook provides insights into implementing and managing FinOps in Azure. It's meant to be used as a quickstart for anyone using the Cloud. \r\n\r\n## Guidance\r\n\r\nFinOps is a continual journey that requires a collaborative effort from an organizations technology team. Cost Optmization is important, but it's only part of the FinOps journey. We also need to look at governance controls, proative monitoring, improving cost visibility and ensure that teams have the required skills to optimize their Cloud spend. \r\n\r\n\r\nThe following links provide perscriptive guidance and recommendations on optimising your Azure costs. \r\n\r\n- [Azure Cloud Adoption Framework - Cost Best Practices](https://learn.microsoft.com/en-gb/azure/cloud-adoption-framework/govern/cost-management/best-practices)\r\n- [Azure Well Architected Framework - Cost Pillar](https://learn.microsoft.com/en-us/azure/architecture/framework/cost/)\r\n- [FinOps Foundation](https://www.finops.org/introduction/what-is-finops/)\r\n\r\n### Workbook Breakdown\r\n\r\n- **Governance**: Audits the use of Azure goverance tools that enable FinOps. \r\n- **Visualization**: Check that visualization services are in use and provides recommendations for using PowerBI and the Cost Management Billing service. \r\n- **Cost Optimization**: Insights into common Azure services and references on how to optimize the cost. \r\n- **Practical Examples**: Examples on how to use Azure Services to enforce and automate FinOps practices.\r\n\r\n> Note: All panels in the dashboard come with a `download to xlsx` button (top right), so the data can be exported.\r\n\r\n### Workbook Requirements\r\n\r\n- `Read Only` Azure RBAC access over the subscription and resources you're investigating.\r\n\r\n### Free Online Training\r\n\r\nFree publicly available training provided by Microsoft.\r\n\r\n  - [Azure Cost Fundamentals](https://learn.microsoft.com/en-us/training/paths/describe-azure-management-governance/)\r\n  - [Control Azure Spend](https://learn.microsoft.com/en-us/training/paths/control-spending-manage-bills/)\r\n  - [Implement FinOps for Azure](https://info.microsoft.com/ww-ondemand-implement-finops-for-azure.html?lcid=en-us)\r\n\r\n### Additional Resources\r\n\r\nThe following articles are published on the Microsoft tech blogs and Ignite videos.\r\n\r\n- Cost Optimisation In the Cloud - [part 1](https://techcommunity.microsoft.com/t5/azure-architecture-blog/part-1-cost-optimisation-in-the-cloud-practical-design-steps-for/ba-p/3574431), [part 2](https://techcommunity.microsoft.com/t5/azure-architecture-blog/part-2-infra-cost-optimisation-in-the-cloud-practical-design/ba-p/3602797) & [part 3](https://techcommunity.microsoft.com/t5/azure-architecture-blog/part-3-architectural-cost-optimisation-practical-design-steps/ba-p/3708993)\r\n- [Azure Cost Optimisation](https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-cost-optimisation/ba-p/3624817)\r\n- [How to reduce your Azure Invoice](https://techcommunity.microsoft.com/t5/azure/how-to-reduce-your-azure-invoice/m-p/3686772)\r\n- [Optimize your investment on Azure](https://www.youtube.com/watch?v=JebcsGuYc7E)\r\n- [Azure FinOps Guide - 2023](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/the-azure-finops-guide/ba-p/3704132)\r\n\r\n\r\n\r\n"
             },
             "name": "text - 0"
           }
