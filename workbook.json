@@ -525,6 +525,58 @@
                   "content": {
                     "version": "NotebookGroup/1.0",
                     "groupType": "editable",
+                    "title": "Tag Usage Overview",
+                    "items": [
+                      {
+                        "type": 3,
+                        "content": {
+                          "version": "KqlItem/1.0",
+                          "query": "ResourceContainers\r\n| where type =~ 'microsoft.resources/subscriptions/resourcegroups'\r\n| extend TagBool = iff(tags != '' and tags != '[]', \"Tagged\",\"Untagged\")\r\n| summarize count() by TagBool\r\n//| project resourceGroup, tags\r\n",
+                          "size": 1,
+                          "title": "Tagged Resource Groups",
+                          "exportFieldName": "resourceGroupTag",
+                          "exportParameterName": "resourceGroupTag",
+                          "showExportToExcel": true,
+                          "queryType": 1,
+                          "resourceType": "microsoft.resourcegraph/resources",
+                          "crossComponentResources": [
+                            "{Subscription}"
+                          ],
+                          "visualization": "piechart"
+                        },
+                        "customWidth": "50",
+                        "name": "query - 3"
+                      },
+                      {
+                        "type": 3,
+                        "content": {
+                          "version": "KqlItem/1.0",
+                          "query": "Resources | extend TagBool = iff(tags != '' and tags != '[]', \"Tagged\",\"Untagged\") | summarize count() by TagBool\r\n\r\n",
+                          "size": 1,
+                          "title": "Untagged Resource Count",
+                          "showExportToExcel": true,
+                          "queryType": 1,
+                          "resourceType": "microsoft.operationalinsights/workspaces",
+                          "crossComponentResources": [
+                            "{Subscription}"
+                          ],
+                          "visualization": "piechart"
+                        },
+                        "customWidth": "50",
+                        "name": "query - 7"
+                      }
+                    ]
+                  },
+                  "name": "overview",
+                  "styleSettings": {
+                    "showBorder": true
+                  }
+                },
+                {
+                  "type": 12,
+                  "content": {
+                    "version": "NotebookGroup/1.0",
+                    "groupType": "editable",
                     "title": "Resources",
                     "items": [
                       {
@@ -1423,7 +1475,7 @@
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "ResourceContainers \r\n| where type =~ 'Microsoft.Resources/subscriptions' \r\n| extend SubscriptionName=name \r\n| join ( Resources | where type == 'microsoft.recoveryservices/vaults' | extend recoveryvault=id, skuTier=tostring(sku['tier']),skuName=tostring(sku['name']) , RecoveryVaultName=name, RecoveryVaultLocation=location, RVRG=resourceGroup) on subscriptionId \r\n| join ( \r\nRecoveryServicesResources\r\n| where type == 'microsoft.recoveryservices/vaults/backuppolicies'\r\n| extend recoveryvault = trim_end( @\"\\/backupPolicies.*\", id)\r\n| extend datasourceType = case(type == 'microsoft.recoveryservices/vaults/backuppolicies', properties.backupManagementType,type == 'microsoft.dataprotection/backupVaults/backupPolicies',properties.datasourceTypes[0],'--')\r\n| extend retentionPolicy =  properties.retentionPolicy\r\n| project backupPolicy = name, recoveryvault,resourceGroup,datasourceType, retentionPolicy\r\n) on recoveryvault\r\n| project recoveryvault, backupPolicy, RVRG ,skuTier ,skuName,subscriptionId, datasourceType,  retentionPolicy, RecoveryVaultName",
+                    "query": "ResourceContainers \r\n| where type =~ 'Microsoft.Resources/subscriptions' \r\n| extend SubscriptionName=name \r\n| join ( Resources | where type == 'microsoft.recoveryservices/vaults' | extend recoveryvault=id, skuTier=tostring(sku['tier']),skuName=tostring(sku['name']) , RecoveryVaultName=name, RecoveryVaultLocation=location, RVRG=resourceGroup) on subscriptionId \r\n| join ( \r\nRecoveryServicesResources\r\n| where type in (\"microsoft.recoveryservices/vaults/replicationjobs\", \"microsoft.recoveryservices/vaults/backuppolicies\")\r\n| extend recoveryvault = trim_end( @\"\\/(backupPolicies|replicationJobs).*\", id)\r\n| summarize ReplicationJobs = countif(type == \"microsoft.recoveryservices/vaults/replicationjobs\"), BackupJobs = countif(type == \"microsoft.recoveryservices/vaults/backuppolicies\") by recoveryvault\r\n) on recoveryvault\r\n| project recoveryvault, RVRG, subscriptionId, RecoveryVaultName, ReplicationJobs, BackupJobs\r\n| order by BackupJobs",
                     "size": 2,
                     "title": "Recovery Vaults Replication ",
                     "exportedParameters": [
@@ -1457,16 +1509,12 @@
                     "gridSettings": {
                       "formatters": [
                         {
-                          "columnMatch": "$gen_group",
+                          "columnMatch": "recoveryvault",
                           "formatter": 13,
                           "formatOptions": {
                             "linkTarget": null,
                             "showIcon": true
                           }
-                        },
-                        {
-                          "columnMatch": "recoveryvault",
-                          "formatter": 5
                         },
                         {
                           "columnMatch": "subscriptionId",
@@ -1477,11 +1525,11 @@
                           }
                         },
                         {
-                          "columnMatch": "SubscriptionName",
+                          "columnMatch": "RecoveryVaultName",
                           "formatter": 5
                         },
                         {
-                          "columnMatch": "RecoveryVaultName",
+                          "columnMatch": "SubscriptionName",
                           "formatter": 5
                         },
                         {
@@ -1492,13 +1540,7 @@
                             "showIcon": true
                           }
                         }
-                      ],
-                      "hierarchySettings": {
-                        "treeType": 1,
-                        "groupBy": [
-                          "recoveryvault"
-                        ]
-                      }
+                      ]
                     },
                     "sortBy": []
                   },
@@ -2845,6 +2887,7 @@
                     "groupType": "editable",
                     "title": "Orphan Disks",
                     "expandable": true,
+                    "expanded": true,
                     "items": [
                       {
                         "type": 3,
@@ -3033,7 +3076,6 @@
                     "groupType": "editable",
                     "title": "Orphan App Service Plans",
                     "expandable": true,
-                    "expanded": true,
                     "items": [
                       {
                         "type": 3,
