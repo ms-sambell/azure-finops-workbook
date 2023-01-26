@@ -50,7 +50,6 @@ To use this Workbook you need to:
 - Uplift the Virtual Machine page
 - Add ASEv3 views to the App Service page
 - Blob inventory by access tier
-- Fixing the AKS Node & SystemNode size checks (moving to Regex check)
 - Grammar
 - A PowerBI PBX for quick provisioning
 - Dark mode support

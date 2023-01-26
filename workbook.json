@@ -1465,7 +1465,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "## Recovery Services Vault - Replications\r\n\r\nThe vaults listed in the list show any Backup Policies for an Azure Data Source and the retention set for this policy. \r\n\r\n- Investigate the data retention for each policy (ensure data isn't kept longer than it needs to be, especially if it can be recreated). \r\n- Check the replication type to ensure the appropriate amount of copies are retained. \r\n\r\n> **Select on of the vaults to see the replication type specified. **",
+                    "json": "## Recovery Services Vault - Replications\r\n\r\nThe vaults listed in the list show any Backup Policies for an Azure Data Source and the retention set for this policy. \r\n\r\n- Investigate the data retention for each policy (ensure data isn't kept longer than it needs to be, especially if it can be recreated). \r\n- Check the replication type to ensure the appropriate amount of copies are retained. \r\n\r\n> **Select on of the vaults to see more information below. **",
                     "style": "info"
                   },
                   "customWidth": "20",
@@ -1544,20 +1544,133 @@
                     },
                     "sortBy": []
                   },
-                  "customWidth": "60",
+                  "customWidth": "80",
                   "name": "query - 1 - Copy"
                 },
                 {
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupVault}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig?\",\"urlParams\":[{\"key\":\"api-version\",\"value\":\"2018-12-20\"}],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.properties\",\"columns\":[{\"path\":\"$.storageModelType\",\"columnid\":\"StorageReplication\"}]}}]}",
+                    "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupVault}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages?\",\"urlParams\":[{\"key\":\"api-version\",\"value\":\"2022-09-30-preview\"}],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value[?(@.name.value == \\\"GRSStorageUsage\\\")]\",\"columns\":[{\"path\":\"$.currentValue\",\"columnid\":\"GRSStorage\"}]}}]}",
                     "size": 4,
-                    "title": "Replication type",
-                    "queryType": 12
+                    "title": "GRS Storage Usage",
+                    "queryType": 12,
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "GRSStorage",
+                        "numberFormat": {
+                          "unit": 2,
+                          "options": {
+                            "style": "decimal"
+                          }
+                        }
+                      },
+                      "showBorder": false
+                    }
                   },
                   "customWidth": "20",
-                  "name": "query - 2"
+                  "name": "query - 2 - Copy"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupVault}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages?\",\"urlParams\":[{\"key\":\"api-version\",\"value\":\"2022-09-30-preview\"}],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value[?(@.name.value == \\\"LRSStorageUsage\\\")]\",\"columns\":[{\"path\":\"$.currentValue\",\"columnid\":\"GRSStorage\"}]}}]}",
+                    "size": 4,
+                    "title": "LRS Storage Usage",
+                    "queryType": 12,
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "GRSStorage",
+                        "numberFormat": {
+                          "unit": 2,
+                          "options": {
+                            "style": "decimal"
+                          }
+                        }
+                      },
+                      "showBorder": false
+                    }
+                  },
+                  "customWidth": "20",
+                  "name": "query - 2 - Copy - Copy"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupVault}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages?\",\"urlParams\":[{\"key\":\"api-version\",\"value\":\"2022-09-30-preview\"}],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value[?(@.name.value == \\\"RAGRSStorageUsage\\\")]\",\"columns\":[{\"path\":\"$.currentValue\",\"columnid\":\"GRSStorage\"}]}}]}",
+                    "size": 4,
+                    "title": "RAGRS Storage Usage",
+                    "queryType": 12,
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "GRSStorage",
+                        "numberFormat": {
+                          "unit": 2,
+                          "options": {
+                            "style": "decimal"
+                          }
+                        }
+                      },
+                      "showBorder": false
+                    }
+                  },
+                  "customWidth": "20",
+                  "name": "query - 2 - Copy - Copy - Copy"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupVault}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages?\",\"urlParams\":[{\"key\":\"api-version\",\"value\":\"2022-09-30-preview\"}],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value[?(@.name.value == \\\"ArchiveGRSStorageUsage\\\")]\",\"columns\":[{\"path\":\"$.currentValue\",\"columnid\":\"GRSStorage\"}]}}]}",
+                    "size": 4,
+                    "title": "Archive GRS Storage Usage",
+                    "queryType": 12,
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "GRSStorage",
+                        "numberFormat": {
+                          "unit": 2,
+                          "options": {
+                            "style": "decimal"
+                          }
+                        }
+                      },
+                      "showBorder": false
+                    }
+                  },
+                  "customWidth": "20",
+                  "name": "query - 2 - Copy - Copy - Copy - Copy"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupVault}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages?\",\"urlParams\":[{\"key\":\"api-version\",\"value\":\"2022-09-30-preview\"}],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value[?(@.name.value == \\\"ArchiveLRSStorageUsage\\\")]\",\"columns\":[{\"path\":\"$.currentValue\",\"columnid\":\"GRSStorage\"}]}}]}",
+                    "size": 4,
+                    "title": "Archive LRS Storage Usage",
+                    "queryType": 12,
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "GRSStorage",
+                        "numberFormat": {
+                          "unit": 2,
+                          "options": {
+                            "style": "decimal"
+                          }
+                        }
+                      },
+                      "showBorder": false
+                    }
+                  },
+                  "customWidth": "20",
+                  "name": "query - 2 - Copy - Copy - Copy - Copy - Copy"
                 }
               ]
             },
@@ -4188,7 +4301,7 @@
                     ],
                     "timeContextFromParameter": "TimeRange",
                     "timeContext": {
-                      "durationMs": 14400000
+                      "durationMs": 0
                     },
                     "metrics": [
                       {
@@ -4200,6 +4313,17 @@
                       }
                     ],
                     "title": "Node Count by Cluster",
+                    "filters": [
+                      {
+                        "id": "1",
+                        "key": "status2",
+                        "operator": 0,
+                        "values": [
+                          "Ready",
+                          "NotReady"
+                        ]
+                      }
+                    ],
                     "gridSettings": {
                       "formatters": [
                         {
@@ -4256,6 +4380,34 @@
                         {
                           "columnMatch": ".*\\/Statuses for various node conditions$",
                           "formatter": 1
+                        },
+                        {
+                          "columnMatch": "Nodes Timeline",
+                          "formatter": 5
+                        },
+                        {
+                          "columnMatch": "Nodes",
+                          "formatter": 1,
+                          "numberFormat": {
+                            "unit": 0,
+                            "options": null
+                          }
+                        },
+                        {
+                          "columnMatch": "Metric",
+                          "formatter": 1
+                        },
+                        {
+                          "columnMatch": "Aggregation",
+                          "formatter": 5
+                        },
+                        {
+                          "columnMatch": "Value",
+                          "formatter": 1
+                        },
+                        {
+                          "columnMatch": "Timeline",
+                          "formatter": 9
                         }
                       ],
                       "rowLimit": 10000,
@@ -4285,7 +4437,7 @@
                     ],
                     "timeContextFromParameter": "TimeRange",
                     "timeContext": {
-                      "durationMs": 14400000
+                      "durationMs": 0
                     },
                     "metrics": [
                       {
@@ -4371,7 +4523,7 @@
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "\tresources\r\n\t| where type == \"microsoft.containerservice/managedclusters\"\r\n\t| extend  AKSname=name,location=location,AKSRG=tolower(resourceGroup),Sku=tostring(sku.name),Tier=tostring(sku.tier),AgentPoolProfiles=properties.agentPoolProfiles\r\n\t| mvexpand AgentPoolProfiles\r\n\t| extend ProfileName = tostring(AgentPoolProfiles.name) ,mode=AgentPoolProfiles.mode,AutoScaleEnabled = AgentPoolProfiles.enableAutoScaling ,SpotVM=AgentPoolProfiles.scaleSetPriority,  VMSize=tostring(AgentPoolProfiles.vmSize),minCount=tostring(AgentPoolProfiles.minCount),maxCount=tostring(AgentPoolProfiles.maxCount) , nodeCount=tostring(AgentPoolProfiles.['count']), maxPods=tostring(AgentPoolProfiles.maxPods)\r\n    | project id,ProfileName,Sku,Tier,mode,AutoScaleEnabled,SpotVM, VMSize,nodeCount,minCount,maxCount, AKSname, maxPods\r\n    | extend SpotVM = iff(mode == \"System\", \"NotApplicable\", SpotVM) \r\n    | extend NodeSize = iff(VMSize in (\"Standard_B4ms\", \"Standard_B2s\", \"Standard_D2s_v3\", \"Standard_D4s_v3\"), \"Rightsized\", \"Oversized\")\r\n    | extend SystemPoolSizing = iff(mode == \"System\", NodeSize, \"\")\r\n    | project id,ProfileName,Sku,Tier,mode,SystemPoolSizing, AutoScaleEnabled,SpotVM, VMSize, nodeCount,minCount,maxCount, AKSname, maxPods\r\n\r\n",
+                    "query": "\tresources\r\n\t| where type == \"microsoft.containerservice/managedclusters\"\r\n\t| extend  AKSname=name,location=location,AKSRG=tolower(resourceGroup),Sku=tostring(sku.name),Tier=tostring(sku.tier),AgentPoolProfiles=properties.agentPoolProfiles\r\n    | extend nodePoolCount = array_length(AgentPoolProfiles)\r\n\t| mvexpand AgentPoolProfiles\r\n\t| extend ProfileName = tostring(AgentPoolProfiles.name) ,mode=AgentPoolProfiles.mode,AutoScaleEnabled = AgentPoolProfiles.enableAutoScaling ,SpotVM=AgentPoolProfiles.scaleSetPriority,  VMSize=tostring(AgentPoolProfiles.vmSize),minCount=tostring(AgentPoolProfiles.minCount),maxCount=tostring(AgentPoolProfiles.maxCount) , nodeCount=tostring(AgentPoolProfiles.['count']), maxPods=tostring(AgentPoolProfiles.maxPods)\r\n    | project id,ProfileName,Sku,Tier,mode,AutoScaleEnabled,SpotVM, VMSize,nodeCount,minCount,maxCount, AKSname, maxPods, nodePoolCount\r\n    | extend SpotVM = iff(mode == \"System\", \"NotApplicable\", SpotVM)\r\n    | extend SystemNodeSize = iff(VMSize matches regex \"([2-4])\", \"Rightsized\", \"Oversized\")\r\n    | extend SystemPoolSizing = iff((mode == \"System\" and nodePoolCount > 1 ), SystemNodeSize, \"\")\r\n    | project id,ProfileName,Sku,Tier,mode,SystemPoolSizing, AutoScaleEnabled,SpotVM, VMSize, nodeCount,minCount,maxCount, AKSname, maxPods, nodePoolCount\r\n\r\n",
                     "size": 2,
                     "title": "AKS Cluster Audit",
                     "noDataMessage": "You have no AKS clusters!",
@@ -4638,7 +4790,7 @@
                 {
                   "type": 1,
                   "content": {
-                    "json": "#### Infrastructure As Code\r\n\r\nTools can be used to scan Cloud Infrastructure As Code configuration and identify potential Cost Optimisation opportunities before the resource is created. \r\n\r\n1. Use PSRule for Azure to scan Infrastructure As Code (ARM, Bicep) for any Well Architected Framework Cost Optimisation recommendations. \r\n2. The Terraform VSCode extension to cost planning. \r\n3. Reduced effort and simplicity when deploying resources to Azure."
+                    "json": "#### Infrastructure As Code\r\n\r\nTools can be used to scan Cloud Infrastructure As Code configuration and identify potential Cost Optimisation opportunities before the resource is created. \r\n\r\n1. Use [PSRule for Azure](https://azure.github.io/PSRule.Rules.Azure) to scan Infrastructure As Code (ARM, Bicep) for any Well Architected Framework Cost Optimisation recommendations. \r\n2. The Terraform VSCode extension for [cost estimates](https://github.com/infracost/vscode-infracost). \r\n3. Reduced effort and simplicity when deploying resources to Azure."
                   },
                   "customWidth": "50",
                   "name": "text - 4"
