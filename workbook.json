@@ -83,7 +83,7 @@
               ]
             },
             "value": {
-              "durationMs": 14400000
+              "durationMs": 172800000
             }
           },
           {
@@ -2970,6 +2970,93 @@
                     "comparison": "isNotEqualTo"
                   },
                   "name": "BillableTablesVolume - Copy"
+                },
+                {
+                  "type": 1,
+                  "content": {
+                    "json": ""
+                  },
+                  "customWidth": "20",
+                  "conditionalVisibility": {
+                    "parameterName": "ResourceUri",
+                    "comparison": "isEqualTo"
+                  },
+                  "name": "text - 8"
+                },
+                {
+                  "type": 1,
+                  "content": {
+                    "json": "# Azure Diagnostics\r\n\r\nAzure services have additional logs which get exported. These logs can sometimes cost more than expected and could be duplicated. ",
+                    "style": "info"
+                  },
+                  "customWidth": "21",
+                  "name": "text - 8"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "let TotalGB=\r\n    AzureDiagnostics\r\n    | project _BilledSize, TimeGenerated\r\n    | where TimeGenerated {TimeRange:value}\r\n    | summarize sum(_BilledSize) / 1.E9;\r\nAzureDiagnostics\r\n| project _ResourceId, Category, _BilledSize\r\n| summarize ResourceGB=sum(_BilledSize) / 1.E9 by _ResourceId, Category\r\n| project Resource=_ResourceId, Category, \r\n    ['Percentage by size']=ResourceGB * 100 / toscalar(TotalGB), ['Log GB']=ResourceGB, ['Estimated cost'] = ResourceGB* 1.4099\r\n| sort by ['Log GB'] desc",
+                    "size": 0,
+                    "title": "Total Diagnostics Logs by Azure Resource",
+                    "timeContextFromParameter": "TimeRange",
+                    "queryType": 0,
+                    "resourceType": "microsoft.operationalinsights/workspaces",
+                    "crossComponentResources": [
+                      "{LogAnalyticsWorkspace}"
+                    ],
+                    "gridSettings": {
+                      "formatters": [
+                        {
+                          "columnMatch": "Percentage by size",
+                          "formatter": 0,
+                          "numberFormat": {
+                            "unit": 1,
+                            "options": {
+                              "style": "decimal"
+                            }
+                          }
+                        },
+                        {
+                          "columnMatch": "Log GB",
+                          "formatter": 0,
+                          "numberFormat": {
+                            "unit": 5,
+                            "options": {
+                              "style": "decimal",
+                              "maximumSignificantDigits": 2
+                            }
+                          }
+                        },
+                        {
+                          "columnMatch": "Estimated cost",
+                          "formatter": 1,
+                          "numberFormat": {
+                            "unit": 0,
+                            "options": {
+                              "currency": "AUD",
+                              "style": "currency"
+                            }
+                          }
+                        }
+                      ],
+                      "filter": true,
+                      "sortBy": [
+                        {
+                          "itemKey": "$gen_number_Estimated cost_4",
+                          "sortOrder": 2
+                        }
+                      ]
+                    },
+                    "sortBy": [
+                      {
+                        "itemKey": "$gen_number_Estimated cost_4",
+                        "sortOrder": 2
+                      }
+                    ]
+                  },
+                  "customWidth": "71",
+                  "name": "query - 0"
                 }
               ]
             },
@@ -4108,7 +4195,7 @@
                     ],
                     "timeContextFromParameter": "TimeRange",
                     "timeContext": {
-                      "durationMs": 14400000
+                      "durationMs": 172800000
                     },
                     "metrics": [
                       {
@@ -4200,7 +4287,7 @@
                     ],
                     "timeContextFromParameter": "TimeRange",
                     "timeContext": {
-                      "durationMs": 14400000
+                      "durationMs": 172800000
                     },
                     "metrics": [
                       {
@@ -4301,7 +4388,7 @@
                     ],
                     "timeContextFromParameter": "TimeRange",
                     "timeContext": {
-                      "durationMs": 0
+                      "durationMs": 172800000
                     },
                     "metrics": [
                       {
@@ -4437,7 +4524,7 @@
                     ],
                     "timeContextFromParameter": "TimeRange",
                     "timeContext": {
-                      "durationMs": 0
+                      "durationMs": 172800000
                     },
                     "metrics": [
                       {
@@ -4517,13 +4604,13 @@
                     }
                   },
                   "customWidth": "40",
-                  "name": "metric - 2 - Copy - Copy - Copy"
+                  "name": "podsPerNode"
                 },
                 {
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "\tresources\r\n\t| where type == \"microsoft.containerservice/managedclusters\"\r\n\t| extend  AKSname=name,location=location,AKSRG=tolower(resourceGroup),Sku=tostring(sku.name),Tier=tostring(sku.tier),AgentPoolProfiles=properties.agentPoolProfiles\r\n    | extend nodePoolCount = array_length(AgentPoolProfiles)\r\n\t| mvexpand AgentPoolProfiles\r\n\t| extend ProfileName = tostring(AgentPoolProfiles.name) ,mode=AgentPoolProfiles.mode,AutoScaleEnabled = AgentPoolProfiles.enableAutoScaling ,SpotVM=AgentPoolProfiles.scaleSetPriority,  VMSize=tostring(AgentPoolProfiles.vmSize),minCount=tostring(AgentPoolProfiles.minCount),maxCount=tostring(AgentPoolProfiles.maxCount) , nodeCount=tostring(AgentPoolProfiles.['count']), maxPods=tostring(AgentPoolProfiles.maxPods)\r\n    | project id,ProfileName,Sku,Tier,mode,AutoScaleEnabled,SpotVM, VMSize,nodeCount,minCount,maxCount, AKSname, maxPods, nodePoolCount\r\n    | extend SpotVM = iff(mode == \"System\", \"NotApplicable\", SpotVM)\r\n    | extend SystemNodeSize = iff(VMSize matches regex \"([2-4])\", \"Rightsized\", \"Oversized\")\r\n    | extend SystemPoolSizing = iff((mode == \"System\" and nodePoolCount > 1 ), SystemNodeSize, \"\")\r\n    | project id,ProfileName,Sku,Tier,mode,SystemPoolSizing, AutoScaleEnabled,SpotVM, VMSize, nodeCount,minCount,maxCount, AKSname, maxPods, nodePoolCount\r\n\r\n",
+                    "query": "\tresources\r\n\t| where type == \"microsoft.containerservice/managedclusters\"\r\n\t| extend  AKSname=name,location=location,AKSRG=tolower(resourceGroup),Sku=tostring(sku.name),Tier=tostring(sku.tier),AgentPoolProfiles=properties.agentPoolProfiles\r\n    | extend nodePoolCount = array_length(AgentPoolProfiles)\r\n\t| mvexpand AgentPoolProfiles\r\n\t| extend ProfileName = tostring(AgentPoolProfiles.name) ,mode=AgentPoolProfiles.mode,AutoScaleEnabled = AgentPoolProfiles.enableAutoScaling ,SpotVM=AgentPoolProfiles.scaleSetPriority,  VMSize=tostring(AgentPoolProfiles.vmSize),minCount=tostring(AgentPoolProfiles.minCount),maxCount=tostring(AgentPoolProfiles.maxCount) , nodeCount=tostring(AgentPoolProfiles.['count']), maxPods=tostring(AgentPoolProfiles.maxPods)\r\n    | project id,ProfileName,Sku,Tier,mode,AutoScaleEnabled,SpotVM, VMSize,nodeCount,minCount,maxCount, AKSname, maxPods, nodePoolCount\r\n    | extend SpotVM = iff(mode == \"System\", \"NotApplicable\", SpotVM)\r\n    | extend SystemNodeSize = iff(VMSize matches regex \"([2-4])\", \"Rightsized\", \"Oversized\")\r\n    | extend SystemPoolSizing = iff((mode == \"System\" and nodePoolCount > 1 ), SystemNodeSize, \"\")\r\n    | project id,ProfileName,Sku,Tier,mode,SystemPoolSizing, AutoScaleEnabled,SpotVM, VMSize, nodeCount,minCount,maxCount, AKSname, maxPods\r\n\r\n",
                     "size": 2,
                     "title": "AKS Cluster Audit",
                     "noDataMessage": "You have no AKS clusters!",
@@ -4673,7 +4760,223 @@
                     },
                     "sortBy": []
                   },
-                  "name": "query - 12 - Copy"
+                  "conditionalVisibility": {
+                    "parameterName": "show",
+                    "comparison": "isEqualTo",
+                    "value": "never"
+                  },
+                  "name": "full-aks-summary"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "KubePodInventory\r\n| where ContainerStatus == \"running\"\r\n| where isnotempty(Name)\r\n| distinct Name, Computer, ClusterId\r\n| extend NodePool = extract(@\"^(\\w+-\\w+)\", 0, Computer)\r\n| extend NodePool = trim_start(\"aks-\", NodePool)\r\n| summarize count(Name) by Computer, NodePool, ClusterId\r\n| summarize round(avg(count_Name), 0) by NodePool, ClusterId",
+                    "size": 0,
+                    "timeContextFromParameter": "TimeRange",
+                    "queryType": 0,
+                    "resourceType": "microsoft.containerservice/managedclusters",
+                    "crossComponentResources": [
+                      "{AKSCluster}"
+                    ]
+                  },
+                  "conditionalVisibility": {
+                    "parameterName": "nervershow",
+                    "comparison": "isEqualTo",
+                    "value": "true"
+                  },
+                  "name": "podCounts"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "{\"version\":\"Merge/1.0\",\"merges\":[{\"id\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\",\"mergeType\":\"rightouter\",\"leftTable\":\"full-aks-summary\",\"rightTable\":\"podCounts\",\"leftColumn\":\"ProfileName\",\"rightColumn\":\"NodePool\"}],\"projectRename\":[{\"originalName\":\"[full-aks-summary].id\",\"mergedName\":\"id\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].ProfileName\",\"mergedName\":\"ProfileName\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].Sku\",\"mergedName\":\"Sku\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].Tier\",\"mergedName\":\"Tier\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].mode\",\"mergedName\":\"mode\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].SystemPoolSizing\",\"mergedName\":\"SystemPoolSizing\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].AutoScaleEnabled\",\"mergedName\":\"AutoScaleEnabled\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].SpotVM\",\"mergedName\":\"SpotVM\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].VMSize\",\"mergedName\":\"VMSize\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].nodeCount\",\"mergedName\":\"nodeCount\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].minCount\",\"mergedName\":\"minCount\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].maxCount\",\"mergedName\":\"maxCount\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].AKSname\",\"mergedName\":\"AKSname\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[full-aks-summary].maxPods\",\"mergedName\":\"maxPods\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[podCounts].NodePool\",\"mergedName\":\"NodePool\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[podCounts].ClusterId\",\"mergedName\":\"ClusterId\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"},{\"originalName\":\"[podCounts].avg_count_Name\",\"mergedName\":\"avg_count_Name\",\"fromId\":\"12a02ca8-4356-49d8-90bc-ded8373c1068\"}]}",
+                    "size": 3,
+                    "title": "AKS Cluster Review",
+                    "queryType": 7,
+                    "gridSettings": {
+                      "formatters": [
+                        {
+                          "columnMatch": "$gen_group",
+                          "formatter": 13,
+                          "formatOptions": {
+                            "linkTarget": "Resource",
+                            "showIcon": true
+                          }
+                        },
+                        {
+                          "columnMatch": "Group",
+                          "formatter": 13,
+                          "formatOptions": {
+                            "linkTarget": "Resource",
+                            "showIcon": true
+                          }
+                        },
+                        {
+                          "columnMatch": "id",
+                          "formatter": 5,
+                          "formatOptions": {
+                            "linkTarget": "Resource"
+                          }
+                        },
+                        {
+                          "columnMatch": "mode",
+                          "formatter": 18,
+                          "formatOptions": {
+                            "thresholdsOptions": "icons",
+                            "thresholdsGrid": [
+                              {
+                                "operator": "==",
+                                "thresholdValue": "System",
+                                "representation": "Gear",
+                                "text": "{0}{1}"
+                              },
+                              {
+                                "operator": "==",
+                                "thresholdValue": "User",
+                                "representation": "Person",
+                                "text": "{0}{1}"
+                              },
+                              {
+                                "operator": "Default",
+                                "thresholdValue": null,
+                                "representation": "unknown",
+                                "text": "{0}{1}"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "columnMatch": "SystemPoolSizing",
+                          "formatter": 18,
+                          "formatOptions": {
+                            "thresholdsOptions": "icons",
+                            "thresholdsGrid": [
+                              {
+                                "operator": "==",
+                                "representation": "more",
+                                "text": ""
+                              },
+                              {
+                                "operator": "==",
+                                "thresholdValue": "Oversized",
+                                "representation": "3",
+                                "text": "{0}{1}"
+                              },
+                              {
+                                "operator": "==",
+                                "thresholdValue": "Rightsized",
+                                "representation": "success",
+                                "text": "{0}{1}"
+                              },
+                              {
+                                "operator": "Default",
+                                "thresholdValue": null,
+                                "representation": "success",
+                                "text": "{0}{1}"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "columnMatch": "AutoScaleEnabled",
+                          "formatter": 18,
+                          "formatOptions": {
+                            "thresholdsOptions": "icons",
+                            "thresholdsGrid": [
+                              {
+                                "operator": "==",
+                                "thresholdValue": "true",
+                                "representation": "success",
+                                "text": ""
+                              },
+                              {
+                                "operator": "Default",
+                                "thresholdValue": null,
+                                "representation": "disabled",
+                                "text": ""
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "columnMatch": "SpotVM",
+                          "formatter": 18,
+                          "formatOptions": {
+                            "thresholdsOptions": "icons",
+                            "thresholdsGrid": [
+                              {
+                                "operator": "is Empty",
+                                "representation": "error",
+                                "text": "{0}{1}Not Spot VM"
+                              },
+                              {
+                                "operator": "==",
+                                "thresholdValue": "NotApplicable",
+                                "representation": "more",
+                                "text": ""
+                              },
+                              {
+                                "operator": "Default",
+                                "thresholdValue": null,
+                                "representation": "success",
+                                "text": ""
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "columnMatch": "nodeCount",
+                          "formatter": 5
+                        },
+                        {
+                          "columnMatch": "AKSname",
+                          "formatter": 13,
+                          "formatOptions": {
+                            "linkTarget": "Resource",
+                            "showIcon": true
+                          }
+                        },
+                        {
+                          "columnMatch": "NodePool",
+                          "formatter": 5
+                        },
+                        {
+                          "columnMatch": "ClusterId",
+                          "formatter": 13,
+                          "formatOptions": {
+                            "linkTarget": "Resource",
+                            "showIcon": true
+                          }
+                        }
+                      ],
+                      "filter": true,
+                      "hierarchySettings": {
+                        "treeType": 1,
+                        "groupBy": [
+                          "AKSname"
+                        ],
+                        "expandTopLevel": true
+                      },
+                      "labelSettings": [
+                        {
+                          "columnId": "minCount",
+                          "label": "nodeMinCount"
+                        },
+                        {
+                          "columnId": "maxCount",
+                          "label": "nodeMaxCount"
+                        },
+                        {
+                          "columnId": "avg_count_Name",
+                          "label": "avgPods"
+                        }
+                      ]
+                    }
+                  },
+                  "showPin": false,
+                  "name": "query - 9"
                 }
               ]
             },

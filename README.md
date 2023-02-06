@@ -28,6 +28,8 @@ Data within your Azure environment is visualized along with the relevant recomme
 
 To use this Workbook you will need Read Only access to the resources you're investigating in Azure. But to save the Workbook you need permissions to create an Azure Workbook.
 
+To see AKS information you need to leverage Container Insights.
+
 > **Recommendation**: Read only access over the entire subscription / management groups will light up all the panels of the Workbook.
 
 ## How To
