@@ -24,7 +24,13 @@ Data within your Azure environment is visualized along with the relevant recomme
 - Cost Optmization insights for Storage Accounts, AKS, Log Analytics, Orphan resources, Recovery services App Services and Virtual Machines.
 ![storageacc-example](.images/storageaccount-example.png)
 
-## Requirements
+## PowerBI Report
+
+This Workbook does not replace the need to setup an organizational view to visualize cloud costs. My coworker Chris has created an amazing PowerBI report which can be imported to quick start viewing this data in PowerBI: [PBX Report](https://github.com/chris-bowman/Azure-Cost-Reporting/tree/main/Power%20BI%20Report).
+
+![power-bi-report](.images/powerbi-report-cost.png)
+
+## Workbook Requirements
 
 To use this Workbook you will need Read Only access to the resources you're investigating in Azure. But to save the Workbook you need permissions to create an Azure Workbook.
 
@@ -53,7 +59,6 @@ To use this Workbook you need to:
 - Add ASEv3 views to the App Service page
 - Blob inventory by access tier
 - Grammar
-- A PowerBI PBX for quick provisioning
 - Dark mode support
 
 ## Additional Documentation
